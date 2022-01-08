@@ -1,14 +1,17 @@
 import { makeStyles } from "@mui/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   appBar: {
-    backgroundColor: "white",
-    height: "120px",
-    // color: "#1976d2",
+    height: 120,
     borderBottom: "solid #eeeeee 1px",
+    justifyContent: "center",
   },
   logo: {
     maxWidth: 160,
+  },
+  drawer: {
+    width: 240,
+    marginLeft: 5,
   },
 }));
 
