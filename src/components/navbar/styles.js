@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(() => ({
   appBar: {
-    height: 120,
+    maxHeight: 120,
     borderBottom: "solid #eeeeee 1px",
     justifyContent: "center",
   },
@@ -13,6 +13,7 @@ const useStyles = makeStyles(() => ({
     width: 240,
     marginLeft: 5,
   },
+  badge: {},
 }));
 
 export default useStyles;

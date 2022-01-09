@@ -17,6 +17,7 @@ import menuIcon from "../../images/icon-menu.svg";
 import avatar from "../../images/image-avatar.png";
 import cart from "../../images/icon-cart.svg";
 import closeIcon from "../../images/icon-close.svg";
+import { ThemeContext } from "@emotion/react";
 
 const navLinks = ["Collections", "Men", "Women", "About", "Contact"];
 
@@ -49,7 +50,7 @@ function NavBar() {
   return (
     <>
       <CssBaseline>
-        <Container>
+        <Container sx={{ px: { xs: 0, md: 4 } }}>
           <AppBar
             position="relative"
             elevation={0}
@@ -141,7 +142,7 @@ function NavBar() {
                       "&:hover": {
                         color: "black",
                         bgcolor: "white",
-                        borderBottom: "solid red 4px",
+                        borderBottom: "4px #ff7d1a solid",
                         borderRadius: 0,
                       },
                     }}
@@ -153,20 +154,27 @@ function NavBar() {
 
               {/* cart and avatar*/}
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Badge badgeContent={4} color="error">
-                  <Box component="img" alt="cart" src={cart}></Box>
+                <Badge badgeContent={4} color="primary">
+                  <Box component="img" sx={{}} alt="cart" src={cart}></Box>
                 </Badge>
               </IconButton>
-              <Box sx={{ flexGrow: 0, ml: 4 }}>
+              <Box sx={{ flexGrow: 0, ml: { xs: 3, md: 4 } }}>
                 <IconButton
                   onClick={handleOpenUserMenu}
                   sx={{
                     p: 0,
                     border: "solid white 2px",
-                    "&:hover": { border: "solid red 2px" },
+                    "&:hover": { border: "solid #ff7d1a 2px" },
                   }}
                 >
-                  <Avatar alt="avatar" src={avatar} />
+                  <Avatar
+                    alt="avatar"
+                    src={avatar}
+                    sx={{
+                      width: { xs: 24, md: 40, lg: 50 },
+                      height: { xs: 24, md: 40, lg: 50 },
+                    }}
+                  />
                 </IconButton>
               </Box>
             </Toolbar>
