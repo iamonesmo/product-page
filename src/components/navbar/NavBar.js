@@ -11,13 +11,14 @@ import Button from "@mui/material/Button";
 
 import { Badge, CssBaseline, List, ListItem } from "@mui/material";
 
+import CustomPopover from "../customPopover/CustomPopover";
+
 import useStyles from "./styles";
 import logo from "../../images/logo.svg";
 import menuIcon from "../../images/icon-menu.svg";
 import avatar from "../../images/image-avatar.png";
 import cart from "../../images/icon-cart.svg";
 import closeIcon from "../../images/icon-close.svg";
-import { ThemeContext } from "@emotion/react";
 
 const navLinks = ["Collections", "Men", "Women", "About", "Contact"];
 
@@ -26,8 +27,20 @@ function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const [state, setState] = useState(false);
+  // state management for Cart Popover
+  const [popState, setPopState] = React.useState(null);
 
+  const handleClick = (event) => {
+    setPopState(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setPopState(null);
+  };
+  const openPop = Boolean(popState);
+  const id = openPop ? "simple-popover" : undefined;
+
+  const [state, setState] = useState(false);
   const toggleDrawer = (open) => (event) => {
     setState(open);
   };
@@ -153,11 +166,17 @@ function NavBar() {
               </Box>
 
               {/* cart and avatar*/}
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton onClick={handleClick} sx={{ p: 0 }}>
                 <Badge badgeContent={4} color="primary">
-                  <Box component="img" sx={{}} alt="cart" src={cart}></Box>
+                  <Box component="img" alt="cart" src={cart}></Box>
                 </Badge>
               </IconButton>
+              <CustomPopover
+                id={id}
+                popState={popState}
+                openPop={openPop}
+                handleClose={handleClose}
+              />
               <Box sx={{ flexGrow: 0, ml: { xs: 3, md: 4 } }}>
                 <IconButton
                   onClick={handleOpenUserMenu}
