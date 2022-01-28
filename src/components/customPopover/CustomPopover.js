@@ -1,6 +1,6 @@
 import React from "react";
 import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
+import PopoverCard from "./popoverCard/PopoverCard";
 
 function CustomPopover({ id, openPop, popState, handleClose }) {
   return (
@@ -14,8 +14,12 @@ function CustomPopover({ id, openPop, popState, handleClose }) {
           vertical: "bottom",
           horizontal: "left",
         }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
       >
-        <Typography>Content of Popover</Typography>
+        <PopoverCard />
       </Popover>
     </div>
   );
