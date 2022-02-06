@@ -145,7 +145,7 @@ function NavBar() {
                     sx={{
                       my: 2,
                       mr: 1,
-                      color: "gray",
+                      color: "#b6bcc8",
                       display: "block",
                       borderBottom: "solid transparent 4px",
                       borderRadius: 0,

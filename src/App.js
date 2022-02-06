@@ -2,7 +2,6 @@ import React from "react";
 import NavBar from "./components/navbar/NavBar";
 import Body from "./components/body/Body";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Box } from "@mui/system";
 
 function App() {
   const theme = createTheme({
@@ -16,6 +15,7 @@ function App() {
       fontFamily: ["Kumbh Sans", "sans-serif"].join(","),
       fontWeightBold: 700,
     },
+
     components: {
       MuiBadge: {
         styleOverrides: {

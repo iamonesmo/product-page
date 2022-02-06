@@ -41,7 +41,8 @@ function PopoverCard() {
             color: "white",
             p: 2,
             boxShadow: "none",
-            borderRadius: 3,
+            "&:hover": { opacity: 0.5, backgroundColor: "#ff7d1a" },
+            borderRadius: 2,
           }}
         >
           <Typography sx={{ fontWeight: "bold" }}>Checkout</Typography>
