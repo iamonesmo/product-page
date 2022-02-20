@@ -6,7 +6,13 @@ import minusIcon from "../../../images/icon-minus.svg";
 import plusIcon from "../../../images/icon-plus.svg";
 import useStyles from "./styles";
 
-function CustomButton() {
+// function addItemHandler({ itemsCount, setItemsCount }) {
+//   console.log(`${itemsCount} FROM ADDITEMHANDLER FUNCTION`);
+//   setItemsCount(itemsCount + 1);
+//   return itemsCount;
+// }
+
+function CustomButton({ itemsCount, setItemsCount }) {
   const classes = useStyles();
   return (
     <Box
@@ -20,11 +26,21 @@ function CustomButton() {
         backgroundColor: "	#f7f8fd",
       }}
     >
-      <IconButton sx={{ p: 0, "&:hover": { opacity: 0.5 } }}>
+      <IconButton
+        onClick={() => {
+          if (itemsCount) {
+            setItemsCount(itemsCount - 1);
+          }
+        }}
+        sx={{ p: 0, "&:hover": { opacity: 0.5 } }}
+      >
         <Box component="img" alt="remove" src={minusIcon} />
       </IconButton>
-      <Typography fontWeight="bold">1</Typography>
-      <IconButton sx={{ p: 0, "&:hover": { opacity: 0.5 } }}>
+      <Typography fontWeight="bold">{itemsCount}</Typography>
+      <IconButton
+        onClick={() => setItemsCount(itemsCount + 1)}
+        sx={{ p: 0, "&:hover": { opacity: 0.5 } }}
+      >
         <Box component="img" alt="add" src={plusIcon} />
       </IconButton>
     </Box>

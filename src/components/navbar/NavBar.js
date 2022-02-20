@@ -22,7 +22,8 @@ import closeIcon from "../../images/icon-close.svg";
 
 const navLinks = ["Collections", "Men", "Women", "About", "Contact"];
 
-function NavBar() {
+function NavBar({ itemsCount, product, setItemsCount }) {
+  //console.log(product);
   const classes = useStyles();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -145,7 +146,7 @@ function NavBar() {
                     sx={{
                       my: 2,
                       mr: 1,
-                      color: "#b6bcc8",
+                      color: "#68707d",
                       display: "block",
                       borderBottom: "solid transparent 4px",
                       borderRadius: 0,
@@ -167,7 +168,7 @@ function NavBar() {
 
               {/* cart and avatar*/}
               <IconButton onClick={handleClick} sx={{ p: 0 }}>
-                <Badge badgeContent={4} color="primary">
+                <Badge badgeContent={itemsCount} color="primary">
                   <Box component="img" alt="cart" src={cart}></Box>
                 </Badge>
               </IconButton>
@@ -176,6 +177,9 @@ function NavBar() {
                 popState={popState}
                 openPop={openPop}
                 handleClose={handleClose}
+                itemsCount={itemsCount}
+                setItemsCount={setItemsCount}
+                product={product}
               />
               <Box sx={{ flexGrow: 0, ml: { xs: 3, md: 4 } }}>
                 <IconButton
