@@ -7,7 +7,7 @@ import SvgIcon from "@mui/material/SvgIcon";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 
 import CustomButton from "./addToCartButton/CustomButton";
-import Modal from "./modal/Modal";
+import Modal from "./lightbox/Modal";
 
 function CartIcon(props) {
   return (
@@ -19,6 +19,12 @@ function CartIcon(props) {
 
 function Body({ itemsCount, setItemsCount, product }) {
   const [selectedImg, setSelectedImg] = useState(product.images[0].image);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => {
+    console.log("showing modal");
+    setShowModal(true);
+  };
 
   return (
     <Container>
@@ -30,10 +36,12 @@ function Body({ itemsCount, setItemsCount, product }) {
               height: "80%",
               width: "90%",
               borderRadius: 5,
+              cursor: "pointer",
             }}
             alt="product image"
             src={selectedImg}
-          ></Box>
+            onClick={() => handleShowModal(setShowModal)}
+          />
 
           <Box
             sx={{
@@ -68,7 +76,14 @@ function Body({ itemsCount, setItemsCount, product }) {
               />
             ))}
           </Box>
-          <Modal />
+          {showModal && (
+            <Modal
+              setShowModal={setShowModal}
+              product={product}
+              setSelectedImg={setSelectedImg}
+              selectedImg={selectedImg}
+            />
+          )}
         </Grid>
         <Grid
           item
