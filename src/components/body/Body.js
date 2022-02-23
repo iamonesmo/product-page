@@ -22,7 +22,6 @@ function Body({ itemsCount, setItemsCount, product }) {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
-    console.log("showing modal");
     setShowModal(true);
   };
 
@@ -40,7 +39,7 @@ function Body({ itemsCount, setItemsCount, product }) {
             }}
             alt="product image"
             src={selectedImg}
-            onClick={() => handleShowModal(setShowModal)}
+            onClick={() => handleShowModal()}
           />
 
           <Box

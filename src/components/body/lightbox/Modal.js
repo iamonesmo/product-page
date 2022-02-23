@@ -12,9 +12,9 @@ function PrevIcon(props) {
       <path
         d="M11 1 3 9l8 8"
         stroke="#ff7d1a"
-        stroke-width="3"
+        strokeWidth="3"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       />
     </SvgIcon>
   );
@@ -26,9 +26,9 @@ function NextIcon(props) {
       <path
         d="m2 1 8 8-8 8"
         stroke="#ff7d1a"
-        stroke-width="3"
+        strokeWidth="3"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       />
     </SvgIcon>
   );
@@ -39,7 +39,7 @@ function CloseIcon(props) {
       <path
         d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
         fill="#ff7d1a"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       />
     </SvgIcon>
   );
@@ -48,6 +48,45 @@ function CloseIcon(props) {
 function Modal({ setShowModal, product, selectedImg }) {
   const classes = useStyles();
   const [modalImg, setModalImg] = useState(selectedImg);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  function handleNext() {
+    const totalLength = product.images.length;
+    if (currentIndex + 1 >= totalLength) {
+      setCurrentIndex(0);
+      const newImg = product.images[0].image;
+      setModalImg(newImg);
+      return;
+    }
+    const newIndex = currentIndex + 1;
+    const newImg = product.images.filter((item) => {
+      return product.images.indexOf(item) === newIndex;
+    });
+    const newItem = newImg[0].image;
+
+    setModalImg(newItem);
+    setCurrentIndex(newIndex);
+  }
+
+  function handlePrev() {
+    const totalLength = product.images.length;
+    if (currentIndex === 0) {
+      setCurrentIndex(totalLength - 1);
+
+      const newImg = product.images[totalLength - 1].image;
+      setModalImg(newImg);
+    }
+
+    const newIndex = currentIndex - 1;
+    const newImg = product.images.filter((item) => {
+      return product.images.indexOf(item) === newIndex;
+    });
+
+    const newItem = newImg[0].image;
+
+    setModalImg(newItem);
+    setCurrentIndex(newIndex);
+  }
 
   return (
     <>
@@ -96,7 +135,9 @@ function Modal({ setShowModal, product, selectedImg }) {
               position: "relative",
               right: "-25px",
               pl: 2,
+              pt: 2,
             }}
+            onClick={handlePrev}
           >
             <PrevIcon />
           </IconButton>
@@ -114,7 +155,9 @@ function Modal({ setShowModal, product, selectedImg }) {
               position: "relative",
               left: "-25px",
               pl: 3,
+              pt: 2,
             }}
+            onClick={handleNext}
           >
             <NextIcon />
           </IconButton>
