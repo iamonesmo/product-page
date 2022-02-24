@@ -8,6 +8,7 @@ import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 
 import CustomButton from "./addToCartButton/CustomButton";
 import Modal from "./lightbox/Modal";
+import { ThemeContext } from "@emotion/react";
 
 function CartIcon(props) {
   return (
@@ -27,27 +28,70 @@ function Body({ itemsCount, setItemsCount, product }) {
 
   return (
     <Container>
-      <Grid container spacing={10} mt={0} px={10}>
+      <Grid container spacing={10} sx={{ mt: { xs: "none", sm: 0 } }}>
         <Grid item xs={12} sm={6}>
           <Box
-            component="img"
-            sx={{
-              height: "80%",
-              width: "90%",
-              borderRadius: 5,
-              cursor: "pointer",
-            }}
-            alt="product image"
-            src={selectedImg}
-            onClick={() => handleShowModal()}
-          />
+            sx={
+              {
+                // xs: {
+                //   display: "block",
+                //   flexDirection: "row",
+                //   position: "relative",
+                // },
+                // md: {
+                //   display: "flex",
+                //   flexDirection: "row",
+                //   position: "relative",
+                // },
+              }
+            }
+          >
+            <Button
+              sx={{
+                display: { xs: "flex", sm: "none" },
+                postion: "relative",
+                left: "70px",
+                color: "white",
+              }}
+            >
+              prev
+            </Button>
+
+            <Box
+              component="img"
+              sx={{
+                // display: { xs: "none", md: "flex" },
+                // height: "80%",
+                // width: "90%",
+                minWidth: "300px",
+                width: { xs: "100%", sm: "90%" },
+                height: "80%",
+                borderRadius: { xs: 0, sm: 5 },
+                cursor: "pointer",
+              }}
+              alt="product image"
+              src={selectedImg}
+              onClick={() => handleShowModal()}
+            />
+            <Button
+              sx={{
+                display: { xs: "flex", sm: "none" },
+                postion: "relative",
+                right: "70px",
+                color: "white",
+              }}
+            >
+              next
+            </Button>
+          </Box>
 
           <Box
             sx={{
               mt: 3,
-              display: "flex",
+              display: { xs: "none", sm: "flex" },
               justifyContent: "space-between",
               width: "90%",
+              minWidth: "300px",
             }}
           >
             {product.images.map((img, index) => (

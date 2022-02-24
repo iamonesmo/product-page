@@ -1,7 +1,7 @@
 import zIndex from "@mui/material/styles/zIndex";
 import { makeStyles } from "@mui/styles";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   modal: {
     //display: "flex",
     borderRadius: "20px",
@@ -38,13 +38,15 @@ const useStyles = makeStyles(() => ({
   },
 
   backdrop: {
-    position: "fixed",
-    zIndex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.75)",
-    width: "100%",
-    height: "100vh",
-    top: 0,
-    left: 0,
+    [theme.breakpoints.up("sm")]: {
+      position: "fixed",
+      zIndex: 1,
+      backgroundColor: "rgba(0, 0, 0, 0.75)",
+      width: "100%",
+      height: "100vh",
+      top: 0,
+      left: 0,
+    },
   },
 }));
 

@@ -92,7 +92,7 @@ function Modal({ setShowModal, product, selectedImg }) {
     <>
       <Box
         sx={{
-          display: "flex",
+          display: { xs: "none", sm: "flex" },
           flexDirection: "column",
           zIndex: 10,
           position: "fixed",
