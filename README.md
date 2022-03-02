@@ -3,7 +3,7 @@
 ![mobileDrawer](https://user-images.githubusercontent.com/72302551/155518558-65e54999-2bf3-42af-ba6c-af009ee9963f.png)
 # Product details page
 
-this is an attempt of the FrontEndMentor challenge found here: https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6
+this is an attempt at the FrontEndMentor challenge found here: https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6
 
 # 
 This is built with ReactJs using the Material UI library
